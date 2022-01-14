@@ -10,14 +10,14 @@ class FastaWindow(QtWidgets.QMainWindow, gui.Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
 
-        # data
+        # data for file processing
         self.task_path = ""
         self.task_file = ""
         self.ans_path = ""
         self.hinge_path = ""
 
-        # mode
-        self.mode = ""  # folder/file
+        # mode: file/folder
+        self.mode = ""
 
         # Paths
         self.pushButton.clicked.connect(self.browse_task_folder)
@@ -25,10 +25,10 @@ class FastaWindow(QtWidgets.QMainWindow, gui.Ui_MainWindow):
         self.pushButton_3.clicked.connect(self.browse_hinge_file)
 
         # button box (ok / cancel)
-        self.buttonBox.accepted.connect(self.start_script)
+        self.buttonBox.accepted.connect(self.start_processing)
         self.buttonBox.rejected.connect(QCoreApplication.instance().quit)
 
-        # radio buttons
+        # radio buttons (file/folder)
         self.button_group = QtWidgets.QButtonGroup()
         self.button_group.addButton(self.radioButton)
         self.button_group.addButton(self.radioButton_2)
@@ -64,14 +64,14 @@ class FastaWindow(QtWidgets.QMainWindow, gui.Ui_MainWindow):
         self.hinge_path = directory
         print("hinge file path:", directory)
 
-    def start_script(self):
+    def start_processing(self):
         min_len = self.spinBox.value()
         prefix = self.lineEdit.text()
-        pattern = "(.*" + self.lineEdit_2.text().upper() + ")"
+        pattern = "(.*" + self.lineEdit_2.text().upper() + ")"  # make pattern for ".fasta" files
         print("min_len:", min_len)
         print("prefix:", prefix)
         print("pattern:", pattern)
         dir_walker(self.task_path, self.ans_path, self.hinge_path,
                    prefix, min_len, pattern, self.task_file)
-        time.sleep(2)
+        time.sleep(2)  # that the window does not close immediately after the work is completed
         QCoreApplication.instance().quit()
