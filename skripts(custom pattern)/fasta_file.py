@@ -4,10 +4,6 @@ from os import path
 from tqdm import tqdm
 
 
-def to_raw(string):
-    return fr'{string}'
-
-
 def is_exists_dir(dir):
     return os.path.exists(dir)
 
@@ -24,9 +20,20 @@ def make_dir(dir):
 
 
 def dir_walker(task_dir, ans_dir, hinge_file_path, prefix, min_len, pattern, task_file=None):
+    """
+
+    :param task_dir: directory with task ".fasta" files (mode: folder)
+    :param ans_dir: directory with edited ".fasta" files
+    :param hinge_file_path: path to hinge file
+    :param prefix: prefix for edited files(in ans_dir)
+    :param min_len: minimum length of read(in task_dir)
+    :param pattern: pattern for sequences which need to process
+    :param task_file: task ".fasta" file (mode: file)
+    :return:
+    """
     make_dir(ans_dir + "\cash")
     cash_dir = ans_dir + "\cash"
-    if task_file:
+    if task_file:  # mode: file
         for i in tqdm(range(1)):
             ans_path_long = path.join(ans_dir, prefix + "_long" + str(i + 1) + ".fasta")
             ans_path_short = path.join(ans_dir, prefix + "_short" + str(i + 1) + ".fasta")
@@ -39,7 +46,7 @@ def dir_walker(task_dir, ans_dir, hinge_file_path, prefix, min_len, pattern, tas
             res_file.correct_lines(pattern)
             res_file.write_data(ans_path_long, ans_path_short, cash_path)
 
-    else:
+    else:  # mode: folder
         files = [
             f for f in os.listdir(task_dir)
             if file_ext(os.path.join(task_dir, f)) == ".fasta"
@@ -124,46 +131,42 @@ class ResFastaFile:
     def correct_lines(self, pattern):
         def add_hinge(name, line):
             """
-            :param line: seq like ...QVTVSS
+            :param line: seq like ...PATTERN
             :param name: name of line
-            hinge:
-                seq1, seq2, ...
-            names:
-                [name + 1, name + 2, ...]; list: [seq + se1, seq + seq2, ...]
+
+            hinge: [seq1, seq2, ...]
+            names: [name + 1, name + 2, ...]
+            lines: [seq + se1, seq + seq2, ...]
             """
             names = [name + " " + str(k) for k in range(1, len(self.hinge) + 1)]
             lines = [line + h for h in self.hinge]
 
             return names, lines
-
-        reads_long = self.data.reads_long
-        names_long = self.data.names_long
-        reads_short = self.data.reads_short
-        names_short = self.data.names_short
-
-        for i in range(len(reads_short)):
-            read_s = reads_short[i]
-            if re.search(pattern, read_s):  # pattern
+        # short reads
+        for i in range(len(self.data.reads_short)):
+            read_s = self.data.reads_short[i]
+            if re.search(pattern, read_s):
                 line = re.search(pattern, read_s).group(0)
-                names_s, lines_s = add_hinge(names_short[i], line)
+                names_s, lines_s = add_hinge(self.data.names_short[i], line)
                 self.new_names_short.append(names_s)
                 self.lines_short.append(lines_s)
 
             else:  # nothing found
                 self.cash_lines.append(read_s)
-                self.cash_names.append(names_short[i])
+                self.cash_names.append(self.data.names_short[i])
 
-        for i in range(len(reads_long)):
-            read_l = reads_long[i]
-            if re.search(pattern, read_l):  # pattern
+        # long reads
+        for i in range(len(self.data.reads_long)):
+            read_l = self.data.reads_long[i]
+            if re.search(pattern, read_l):
                 line = re.search(pattern, read_l).group(0)
-                names_l, lines_l = add_hinge(names_long[i], line)
+                names_l, lines_l = add_hinge(self.data.names_long[i], line)
                 self.new_names.append(names_l)
                 self.lines.append(lines_l)
 
             else:  # nothing found
                 self.cash_lines.append(read_l)
-                self.cash_names.append(names_long[i])
+                self.cash_names.append(self.data.names_long[i])
 
     def write_data(self, long_path, short_path, cash_path):
         with open(long_path, "w") as res_f_long:
