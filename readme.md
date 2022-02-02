@@ -32,9 +32,11 @@ ___
 ## Example of file processing by the HingeKnitter
 
 Start parameters:
+
 ![](img/start_window.jpg)
 
 Console:
+
 ![](img/console.jpg)
 
 Hinge:
@@ -43,8 +45,10 @@ Hinge:
 
 
 Result:
-- directory:
+- directory
+
 ![](img/res_dir.jpg)
 
 - example of processed sequence
+
 ![](img/res_example.jpg)
