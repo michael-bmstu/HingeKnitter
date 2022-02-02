@@ -11,7 +11,7 @@ ___
 ![](img/main.jpg)
 
 **Parameters:**
-- mode(radiobutton):
+- mode(radiobuttons):
   - folder: program will process folder with task files
   - file: program will process only one given file
 - paths(3 buttons):
