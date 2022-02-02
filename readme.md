@@ -37,11 +37,14 @@ Start parameters:
 Console:
 ![](img/console.jpg)
 
+Hinge:
+
+![](img/hinge.jpg)
+
+
 Result:
-- dir:
+- directory:
 ![](img/res_dir.jpg)
+
 - example of processed sequence
-  - hinge
-  ![](img/hinge.jpg)
-  - result
-  ![](img/res_example.jpg)
+![](img/res_example.jpg)
