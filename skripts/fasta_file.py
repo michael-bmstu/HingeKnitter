@@ -35,10 +35,10 @@ def dir_walker(task_dir, ans_dir, hinge_file_path, prefix, min_len, pattern, tas
     cash_dir = ans_dir + "\cash"
     if task_file:  # mode: file
         for i in tqdm(range(1)):
-            ans_path_long = path.join(ans_dir, prefix + "_long" + str(i + 1) + ".fasta")
-            ans_path_short = path.join(ans_dir, prefix + "_short" + str(i + 1) + ".fasta")
+            ans_path_long = path.join(ans_dir, prefix + "_long" + "_" + str(i + 1) + ".fasta")
+            ans_path_short = path.join(ans_dir, prefix + "_short" + "_" + str(i + 1) + ".fasta")
 
-            cash_path = path.join(cash_dir, prefix + "_cash" + str(i + 1) + ".fasta")
+            cash_path = path.join(cash_dir, prefix + "_cash" + "_" + str(i + 1) + ".fasta")
 
             data_file = FastaFile(task_file, min_len)
             res_file = ResFastaFile(hinge_file_path, data_file)
