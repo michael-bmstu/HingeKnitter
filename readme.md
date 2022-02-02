@@ -53,7 +53,7 @@ Directory:
 Example of processed sequence(pattern=QVTVSS):
 - before:
 
-`>3325 dima12_10 tufas Ab cDNA library`
+`>3325 seqnameXXX`
 
 `GRFTISRDNPKNTLYLQLNSLKTEDAAMYYCLIREGYWGQGT`**QVTVSS**`AAAESW`
 - after:
