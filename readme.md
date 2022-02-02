@@ -44,11 +44,18 @@ Hinge:
 ![](img/hinge.jpg)
 
 
-Result:
-- directory
+**Result:**
+
+Directory:
 
 ![](img/res_dir.jpg)
 
-- example of processed sequence
+Example of processed sequence(pattern=QVTVSS):
+- before:
+
+`>3325 dima12_10 tufas Ab cDNA library`
+
+`GRFTISRDNPKNTLYLQLNSLKTEDAAMYYCLIREGYWGQGT`**QVTVSS**`AAAESW`
+- after:
 
 ![](img/res_example.jpg)
