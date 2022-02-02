@@ -2,7 +2,7 @@
 ___
 ## Description
 
-##Usage
+## Usage
 ___
 - run the script(main.py) in your python(3.6+) interpreter
 - run HingeKnitter.exe file
@@ -29,7 +29,7 @@ ___
   and after processing will be writen in two 
   files(prefix_short_num and prefix_long_num)
 
-##Example of file processing by the HingeKnitter
+## Example of file processing by the HingeKnitter
 
 Start parameters:
 ![](img/start_window.jpg)
