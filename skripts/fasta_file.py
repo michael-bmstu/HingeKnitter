@@ -31,8 +31,8 @@ def dir_walker(task_dir, ans_dir, hinge_file_path, prefix, min_len, pattern, tas
     :param task_file: task ".fasta" file (mode: file)
     :return:
     """
-    make_dir(ans_dir + "\cash")  # creating directory for cash files
-    cash_dir = ans_dir + "\cash"
+    make_dir(ans_dir + "/cash")  # creating directory for cash files
+    cash_dir = ans_dir + "/cash"
     if task_file:  # mode: file
         for i in tqdm(range(1)):
             ans_path_long = path.join(ans_dir, prefix + "_long" + "_" + str(i + 1) + ".fasta")

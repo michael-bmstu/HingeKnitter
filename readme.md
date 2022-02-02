@@ -16,7 +16,8 @@ ___
   - file: program will process only one given file
 - paths(3 buttons):
     - to the task folder/file
-    - to the folder where processed file(-s) will be saved
+    - to the folder where processed file(-s) will be saved, 
+  also a cash folder(file(-s) with sequences where _pattern_ wasn't found) will be created here
     - to the file with hinge sequences
 - prefix(default=file):
   - prefix for the processed file(-s), will use for naming processed file(-s)
@@ -27,3 +28,20 @@ ___
   groups(1. length of read < min_len and 2. length of read >= min_len)
   and after processing will be writen in two 
   files(prefix_short_num and prefix_long_num)
+
+##Example of file processing by the HingeKnitter
+
+Start parameters:
+![](img/start_window.jpg)
+
+Console:
+![](img/console.jpg)
+
+Result:
+- dir:
+![](img/res_dir.jpg)
+- example of processed sequence
+  - hinge
+  ![](img/hinge.jpg)
+  - result
+  ![](img/res_example.jpg)
