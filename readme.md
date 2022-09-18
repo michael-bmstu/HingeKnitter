@@ -55,7 +55,6 @@ Example of processed sequence(pattern=QVTVSS):
 - before:
 
 `>3325 seqnameXXX`
-
 `GRFTISRDNPKNTLYLQLNSLKTEDAAMYYCLIREGYWGQGT`**QVTVSS**`AAAESW`
 - after:
 
