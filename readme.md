@@ -2,6 +2,8 @@
 ___
 ## Description
 
+Hinge Knitter is a computational tool designed to identify and manipulate specific RNA sequences within a given RNA chain. The program facilitates the generation of multiple instances of a specified sequence, appending these instances to the original RNA sequence retrieved from a hinge file. This functionality is particularly useful in the context of molecular biology and bioinformatics.
+
 ## Usage
 ___
 - run the script(main.py) in your python(3.6+) interpreter
